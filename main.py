@@ -10,9 +10,9 @@ def buscarAvionSerial(serial):
         print('No existe el avion')
     elif len(serial) > 8:
         print('Serial no valido. Ingrese un serial de maximo 8 caracteres')
-
-    avion = hashtable.get(serial)
-    return avion
+    else:
+        avion = hashtable.get(serial)
+        return avion
 
 def buscarAvionNombre(nombre):
     serial = ''
