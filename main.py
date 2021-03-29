@@ -6,23 +6,50 @@ from Avion import Avion
 hashtable = Hashtable()
 
 def buscarAvionSerial(serial):
-    if serial == '':
-        print('No existe el avion')
-    elif len(serial) > 8:
+    '''Busca el avion por serial'''
+    if serial == '' or len(serial) > 8:
+        #Si no es valido, retorna none
         print('Serial no valido. Ingrese un serial de maximo 8 caracteres')
+        return None
     else:
+        #De lo contrario se busca el avion
         avion = hashtable.get(serial)
         return avion
 
 def buscarAvionNombre(nombre):
+    '''Busca el avion por nombre'''
     serial = ''
+    #Se declara serial como string vacio por defecto
 
-    # for avion in aviones:
-    #     if nombre == avion.nombre:
-    #         serial = avion.serial
-    #         break
-    
+    if nombre == '' or len(nombre) > 12:
+        #Si el nombre no es valido se retorna como string vacio
+        print('Nombre no valido. Ingrese un nombre de maximo 12 caracteres')
+    else:
+        #Se busca el avion segun el nombre y se retorna el serial del avion
+        return
+
+        # for avion in aviones:
+        #     if nombre == avion.nombre:
+        #         serial = avion.serial
+        #         break
+
     return serial
 
 def buscarAvionModelo(modelo):
-    return
+    '''Busca el avion por modelo'''
+    serial = ''
+    #Se declara serial como string vacio por defecto
+
+    if modelo == '' or len(modelo) > 20:
+        #Si el modelo no es valido se retorna como un string vacio
+        print('Modelo no valido. Ingrese un modelo de maximo 20 caracteres')
+    else:
+        #Se busca el avion segun el modelo y se retorna el serial del avion
+        return
+        # for avion in aviones:
+        #     if modelo == avion.modelo:
+        #         serial = avion.serial
+        #         break
+
+    return serial
+        
