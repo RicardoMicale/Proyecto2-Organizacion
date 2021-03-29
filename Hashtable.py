@@ -63,9 +63,9 @@ class Hashtable():
         #True si es mayor que la mitad, False si es menor
         return items == len(self.lista)
 
-    def doblar(self):
-        '''Dobla el tamaño de la lista'''
-        hashtable2 = Hashtable(length=len(self.lista) * 2)
+    def agrandar(self):
+        '''Agranda el tamaño de la lista'''
+        hashtable2 = Hashtable(length=len(self.lista) + 1)
 
         for i in range(len(self.lista)):
             if self.lista[i] is None:
