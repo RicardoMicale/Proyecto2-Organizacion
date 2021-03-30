@@ -7,13 +7,13 @@ hashtable = Hashtable()
 
 def buscarAvionSerial(serial):
     '''Busca el avion por serial'''
-    if serial == '' or len(serial) > 8:
+    if serial == '' or len(serial) > 9 or type(serial[0]) != str:
         #Si no es valido, retorna none
-        print('Serial no valido. Ingrese un serial de maximo 8 caracteres')
+        print('Serial no valido. Ingrese un serial de maximo 9 caracteres donde el primero sea una letra')
         return None
     else:
         #De lo contrario se busca el avion
-        avion = hashtable.get(serial)
+        avion = hashtable.buscar(serial)
         return avion
 
 def buscarAvionNombre(nombre):

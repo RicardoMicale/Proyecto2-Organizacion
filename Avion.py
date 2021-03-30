@@ -6,7 +6,15 @@ class Avion():
         self.piloto = piloto
 
     def agregarPiloto(self, piloto):
-        piloto = piloto
+        self.piloto = piloto
 
     def borrarPiloto(self):
-        piloto = None
+        self.piloto = None
+    
+    def infoAvion(self):
+        print(
+            'Serial del avion: {}\n Modelo del avion: {}\n Nombre del avion: {}\n'
+            .format(self.serial, self.modelo, self.nombre)
+        )
+        if self.piloto != None:
+            print('Piloto: ' + self.piloto.getInfo())
