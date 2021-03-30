@@ -5,8 +5,11 @@ class Piloto():
 
     def asignarAvion(self):
         #Declara que el piloto tiene un avion asignado
-        tieneAvion = True
+        self.tieneAvion = True
 
     def quitarAvion(self):
         #Declara que el piloto ya no tiene el avion asignado
-        tieneAvion = False
+        self.tieneAvion = False
+
+    def getInfo(self):
+        print(f'Nombre: {self.nombre}')
