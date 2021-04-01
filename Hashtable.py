@@ -25,7 +25,6 @@ class Hashtable():
         if len(self.lista) != 0:
             #Si la longitud de la lista es distinto de cero, se procede a la busqueda
             indice = self.hashFunc(llave)
-            print(indice)
             if len(self.lista[indice]) == 0:
                 #Si la longitud de la sublista es 0 quiere decir que no hay aviones registrados
                 #en ese indice de la tabla
@@ -65,6 +64,7 @@ class Hashtable():
                     tupla = sublista[i]
                     if llave == tupla[0]:
                         sublista.remove(tupla)
+                        break
                 #Si no se encuentra el avion qioere decir que no esta registrado
                 else:
                     print('No existe el avion')

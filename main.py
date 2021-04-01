@@ -25,7 +25,7 @@ def crearAvion():
         serial = input('Ingrese el serial del avion: ')
         if len(serial) > 9:
             print('Serial no valido. Debe tener maximo 9 caracteres, empezando con 1 letra seguida de 8 numeros')
-        elif serial[0] not in letras:
+        elif serial[0].lower() not in letras:
             print('El primer caracter del serial debe ser una letra')
         elif validarNumeros(serial[1:]):
             print('El primer caracter del serial debe ser una letra')
@@ -76,33 +76,29 @@ def crearPiloto():
     piloto = Piloto(nombre)
     #Se agrega a la lista de pilotos
     pilotos.append(piloto)
+    return piloto
 
-def registrarPiloto(nombre):
+def registrarPiloto():
     '''Registra el piloto en el avion'''
     serial = input('Introduzca el serial completo del avion al que le quiere asignar el piloto: ')
-    avion = hashtable.buscar(serial[1:])
-
-    for piloto in pilotos:
-        if nombre == piloto.nombre:
-            avion.piloto = piloto
-            break
-    else:
-        print('Piloto no encontrado')
+    
+    avion = hashtable.buscar(int(serial[1:]))
+    avion.piloto = crearPiloto()
 
 def retirarPiloto():
     '''Elimina el piloto del avion'''
-    serial = input('Introduzca el serial completo del avion al que le quiere asignar el piloto: ')
-    avion = hashtable.buscar(serial[1:])
+    serial = input('Introduzca el serial completo del avion al que le quiere retirar el piloto: ')
+    avion = hashtable.buscar(int(serial[1:]))
     avion.piloto = None
 
 def borrarAvion():
     '''Borra el avion de la base de datos'''
     serial = input('Ingrese el serial completo del avion que quiera borrar: ')
-    hashtable.borrar(serial[1:])
+    hashtable.borrar(int(serial[1:]))
 
 def buscarAvionSerial():
     '''Busca el avion por serial'''
-    serial = input('Introduzca el serial completo del avion al que le quiere asignar el piloto: ')
+    serial = input('Introduzca el serial completo del avion que quiere buscar: ')
     if serial == '' or len(serial) > 9 or type(serial[0]) != str:
         #Si no es valido, retorna none
         print('Serial no valido. Ingrese un serial de maximo 9 caracteres donde el primero sea una letra')
@@ -110,7 +106,10 @@ def buscarAvionSerial():
     else:
         #De lo contrario se busca el avion
         avion = hashtable.buscar(int(serial[1:]))
-        return avion.infoAvion()
+        if avion != None:
+            return avion.infoAvion()
+        else:
+            print('Avion no encontrado')
 
 
 # MENU 
@@ -170,6 +169,7 @@ def main():
                     # IDEA --> IMPRIMIR UNA LISTA DE LOS AVIONES CON EL CAMPO PILOTO VACIO LUEGO SE SELECCIONA EL AVION QUE SE DESEE   
                     print("Entraste a asignar un piloto!")
                     print("------------------------------------------------------------------------------------------------------------------------------------")     
+                    registrarPiloto()
                 elif opcion == "2":
                     break
                 else:
@@ -185,6 +185,7 @@ def main():
                     # IDEA --> IMPRIMIR UNA LISTA DE LOS AVIONES CON EL CAMPO PILOTO LLENO LUEGO SE SELECCIONA EL AVION QUE SE DESEE Y SE LIMPIA ESE ESPACIO 
                     print("Entraste a Liberar un Avión!")  
                     print("------------------------------------------------------------------------------------------------------------------------------------")    
+                    retirarPiloto()
                 elif opcion == "2":
                     break
                 else:
@@ -200,6 +201,7 @@ def main():
                     # IDEA --> IMPRIMIR UNA LISTA DE LOS AVIONES CON EL CAMPO PILOTO LLENO LUEGO SE SELECCIONA EL AVION QUE SE DESEE Y SE LIMPIA ESE ESPACIO 
                     print("Entraste a Eliminar Avión!")
                     print("------------------------------------------------------------------------------------------------------------------------------------")      
+                    borrarAvion()
                 elif opcion == "2":
                     break
                 else:
