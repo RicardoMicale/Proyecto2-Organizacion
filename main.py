@@ -4,7 +4,7 @@ from Piloto import Piloto
 from Avion import Avion
 letras = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 pilotos = []
-
+aviones = []
 
 hashtable = Hashtable()
 
@@ -141,4 +141,107 @@ def buscarAvionSerial(serial):
 #         #         break
 
 #     return serial
-        
+
+
+# MENU 
+def main():
+    while True:
+        opcion = input("\n\t\tBienvenido a Aviocc Airlines!\n1. Inserción de un Nuevo Avión.\n2. Búsqueda de un Avión.\n3. Asignación de Piloto a un Avión Libre.\n4. Liberación de un Avión.\n5. Eliminación de un Avión.\n6. Salir.\n")
+        print("------------------------------------------------------------------------------------------------------------------------------------")
+        # PRIMERA OPCION (CREACION AVION)
+        if opcion == "1":
+            while True:
+                opcion = input("\t\tInserción de un Nuevo Avión\n1. Crear Avión.\n2. Salir.\n")
+                print("------------------------------------------------------------------------------------------------------------------------------------")
+                if opcion =="1":
+                    # FUNCION PARA CREAR AVION
+                    print("Entraste para crear un nuevo avion!")
+                    print("------------------------------------------------------------------------------------------------------------------------------------")
+                elif opcion == "2":
+                    # SALIR AL MENU NUEVAMENTE
+                    break
+                else:
+                    # ERROR SI SE INGRESA OTRA OPCION
+                    print("ERROR.Ingrese una opcion valida.")
+                    print("------------------------------------------------------------------------------------------------------------------------------------")
+        # SEGUNDA OPCION (BUSQUEDA)
+        elif opcion == "2":
+            while True:
+                opcion = input("\t\tBúsqueda de un Avión\n1. Búsqueda por Serial.\n2. Búsqueda por Modelo.\n3. Búsqueda por Nombre.\n4. Salir.\n")
+                print("------------------------------------------------------------------------------------------------------------------------------------")
+                if opcion =="1":
+                    # FUNCION PARA BUSCAR POR SERIAL
+                    print("Entraste a buscar por Serial!")
+                    print("------------------------------------------------------------------------------------------------------------------------------------")
+                elif opcion == "2":
+                    # FUNCION PARA BUSCAR POR MODELO
+                    print("Entraste a buscar por Modelo!")
+                    print("------------------------------------------------------------------------------------------------------------------------------------")
+                elif opcion == "3":
+                    # FUNCION PARA BUSCAR POR NOMBRE
+                    print("Entraste a buscar por Nombre!")
+                    print("------------------------------------------------------------------------------------------------------------------------------------")
+                elif opcion == "4":
+                    # SALIR AL MENU NUEVAMENTE
+                    break
+                else:
+                    # ERROR SI SE INGRESA OTRA OPCION
+                    print("ERROR.Ingrese una opcion valida.")
+                    print("------------------------------------------------------------------------------------------------------------------------------------")
+        # TERCERA OPCION (ASIGNACION DE PILOTO)
+        elif opcion == "3":
+            while True:
+                opcion = input("\t\tAsignación de Piloto a un Avión Libre\n1. Agregar Piloto.\n2. Salir.\n")
+                print("------------------------------------------------------------------------------------------------------------------------------------")
+                if opcion == "1":
+                    # FUNCION PARA LLENAR EL CAMPO PILOTO DE UN AVION BUSCANDOLOS POR SERIAL,MODELO O NOMBRE
+                    # IDEA --> IMPRIMIR UNA LISTA DE LOS AVIONES CON EL CAMPO PILOTO VACIO LUEGO SE SELECCIONA EL AVION QUE SE DESEE   
+                    print("Entraste a asignar un piloto!")
+                    print("------------------------------------------------------------------------------------------------------------------------------------")     
+                elif opcion == "2":
+                    break
+                else:
+                    print("ERROR.Ingrese una opcion valida.")
+                    print("------------------------------------------------------------------------------------------------------------------------------------")
+        # CUARTA OPCION (LIBERACION DE AVION "ELIMINAR CAMPO PILOTO")
+        elif opcion == "4":
+            while True:
+                opcion = input("\t\tLiberación un Avión\n1. Liberar Avión.\n2. Salir.\n")
+                print("------------------------------------------------------------------------------------------------------------------------------------")
+                if opcion == "1":
+                    # FUNCION PARA VACIAR EL CAMPO PILOTO DE UN AVION.
+                    # IDEA --> IMPRIMIR UNA LISTA DE LOS AVIONES CON EL CAMPO PILOTO LLENO LUEGO SE SELECCIONA EL AVION QUE SE DESEE Y SE LIMPIA ESE ESPACIO 
+                    print("Entraste a Liberar un Avión!")  
+                    print("------------------------------------------------------------------------------------------------------------------------------------")    
+                elif opcion == "2":
+                    break
+                else:
+                    print("ERROR.Ingrese una opcion valida.")
+                    print("------------------------------------------------------------------------------------------------------------------------------------")
+        # QUINTA OPCION (ELIMINAR AVION)
+        elif opcion == "5":
+            while True:
+                opcion = input("\t\tEliminación de un Avión\n1. Eliminar Avión.\n2. Salir.\n")
+                print("------------------------------------------------------------------------------------------------------------------------------------")
+                if opcion == "1":
+                    # FUNCION PARA ELIMINAR UN AVION.
+                    # IDEA --> IMPRIMIR UNA LISTA DE LOS AVIONES CON EL CAMPO PILOTO LLENO LUEGO SE SELECCIONA EL AVION QUE SE DESEE Y SE LIMPIA ESE ESPACIO 
+                    print("Entraste a Eliminar Avión!")
+                    print("------------------------------------------------------------------------------------------------------------------------------------")      
+                elif opcion == "2":
+                    break
+                else:
+                    print("ERROR.Ingrese una opcion valida.")
+                    print("------------------------------------------------------------------------------------------------------------------------------------")
+        # SEXTA OPCION SALIR DEL PROGRAMA
+        elif opcion == "6":
+            print("Gracias, Vuelva pronto!")
+            print("------------------------------------------------------------------------------------------------------------------------------------")
+            break
+        # ERROR SI SE INGRESA OTRA OPCION
+        else:
+            print("ERROR.Ingrese una opcion valida.")
+            print("------------------------------------------------------------------------------------------------------------------------------------")
+
+main()
+
