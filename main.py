@@ -25,7 +25,7 @@ def crearAvion():
             print('Serial no valido. Debe tener maximo 9 caracteres, empezando con 1 letra seguida de 8 numeros')
         elif serial[0] not in letras:
             print('El primer caracter del serial debe ser una letra')
-        elif validarNumeros(serial):
+        elif validarNumeros(serial[1:]):
             print('El primer caracter del serial debe ser una letra')
         elif serial == '':
             print('Serial no valido')
@@ -55,7 +55,7 @@ def crearAvion():
     #Se crea el avion
     avion = Avion(serial, modelo, nombre)
     #Se agrega al hash table
-    hashtable.agregar(serial[1:], avion) 
+    hashtable.agregar(int(serial[1:]), avion) 
 
 def crearPiloto():
     nombre = ''
@@ -94,16 +94,17 @@ def borrarAvion():
     serial = input('Ingrese el serial completo del avion que quiera borrar: ')
     hashtable.borrar(serial[1:])
 
-def buscarAvionSerial(serial):
+def buscarAvionSerial():
     '''Busca el avion por serial'''
+    serial = input('Introduzca el serial completo del avion al que le quiere asignar el piloto: ')
     if serial == '' or len(serial) > 9 or type(serial[0]) != str:
         #Si no es valido, retorna none
         print('Serial no valido. Ingrese un serial de maximo 9 caracteres donde el primero sea una letra')
         return None
     else:
         #De lo contrario se busca el avion
-        avion = hashtable.buscar(serial)
-        return avion
+        avion = hashtable.buscar(int(serial[1:]))
+        return avion.infoAvion()
 
 # def buscarAvionNombre(nombre):
 #     '''Busca el avion por nombre'''
@@ -157,6 +158,7 @@ def main():
                     # FUNCION PARA CREAR AVION
                     print("Entraste para crear un nuevo avion!")
                     print("------------------------------------------------------------------------------------------------------------------------------------")
+                    crearAvion()
                 elif opcion == "2":
                     # SALIR AL MENU NUEVAMENTE
                     break
@@ -173,6 +175,7 @@ def main():
                     # FUNCION PARA BUSCAR POR SERIAL
                     print("Entraste a buscar por Serial!")
                     print("------------------------------------------------------------------------------------------------------------------------------------")
+                    buscarAvionSerial()
                 elif opcion == "2":
                     # FUNCION PARA BUSCAR POR MODELO
                     print("Entraste a buscar por Modelo!")
