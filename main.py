@@ -9,12 +9,14 @@ aviones = []
 hashtable = Hashtable()
 
 def validarNumeros(string):
+    '''Valida los numeros del serial'''
     for char in string:
         if char in letras:
             return True
     return False
 
 def crearAvion():
+    '''Crea el objeto avion'''
     serial = ''
     modelo = ''
     nombre = ''
@@ -58,6 +60,7 @@ def crearAvion():
     hashtable.agregar(int(serial[1:]), avion) 
 
 def crearPiloto():
+    '''Crea el objeto piloto'''
     nombre = ''
     #Validacion del nombre
     while True:
@@ -75,6 +78,7 @@ def crearPiloto():
     pilotos.append(piloto)
 
 def registrarPiloto(nombre):
+    '''Registra el piloto en el avion'''
     serial = input('Introduzca el serial completo del avion al que le quiere asignar el piloto: ')
     avion = hashtable.buscar(serial[1:])
 
@@ -86,11 +90,13 @@ def registrarPiloto(nombre):
         print('Piloto no encontrado')
 
 def retirarPiloto():
+    '''Elimina el piloto del avion'''
     serial = input('Introduzca el serial completo del avion al que le quiere asignar el piloto: ')
     avion = hashtable.buscar(serial[1:])
     avion.piloto = None
 
 def borrarAvion():
+    '''Borra el avion de la base de datos'''
     serial = input('Ingrese el serial completo del avion que quiera borrar: ')
     hashtable.borrar(serial[1:])
 
@@ -105,43 +111,6 @@ def buscarAvionSerial():
         #De lo contrario se busca el avion
         avion = hashtable.buscar(int(serial[1:]))
         return avion.infoAvion()
-
-# def buscarAvionNombre(nombre):
-#     '''Busca el avion por nombre'''
-#     serial = ''
-#     #Se declara serial como string vacio por defecto
-
-#     if nombre == '' or len(nombre) > 12:
-#         #Si el nombre no es valido se retorna como string vacio
-#         print('Nombre no valido. Ingrese un nombre de maximo 12 caracteres')
-#     else:
-#         #Se busca el avion segun el nombre y se retorna el serial del avion
-#         return
-
-#         # for avion in aviones:
-#         #     if nombre == avion.nombre:
-#         #         serial = avion.serial
-#         #         break
-
-#     return serial
-
-# def buscarAvionModelo(modelo):
-#     '''Busca el avion por modelo'''
-#     serial = ''
-#     #Se declara serial como string vacio por defecto
-
-#     if modelo == '' or len(modelo) > 20:
-#         #Si el modelo no es valido se retorna como un string vacio
-#         print('Modelo no valido. Ingrese un modelo de maximo 20 caracteres')
-#     else:
-#         #Se busca el avion segun el modelo y se retorna el serial del avion
-#         return
-#         # for avion in aviones:
-#         #     if modelo == avion.modelo:
-#         #         serial = avion.serial
-#         #         break
-
-#     return serial
 
 
 # MENU 
