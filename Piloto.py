@@ -12,4 +12,4 @@ class Piloto():
         self.tieneAvion = False
 
     def getInfo(self):
-        return 'Nombre: ' + self.nombre
+        return self.nombre

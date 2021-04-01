@@ -13,8 +13,8 @@ class Avion():
     
     def infoAvion(self):
         print(
-            'Serial del avion: {}\n Modelo del avion: {}\n Nombre del avion: {}\n'
-            .format(self.serial, self.modelo, self.nombre)
+            'Serial del avion: {}\nModelo del avion: {}\nNombre del avion: {}'
+            .format(self.serial, self.modelo, self.nombre), end=' '
         )
         if self.piloto != None:
-            print('Piloto: ' + self.piloto.getInfo())
+            print('\nPiloto: ' + self.piloto.getInfo() + '\n')

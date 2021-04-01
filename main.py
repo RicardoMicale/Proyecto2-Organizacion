@@ -111,9 +111,26 @@ def buscarAvionSerial():
         else:
             print('Avion no encontrado')
 
+#Leer archivo de texto
+def leerTxt():
+    datos = [] #Lista para los datos del archivo de texto
+    with open('datos.txt', 'r') as f: #Se guardan las lineas del txt como sublistas con cada dato del avion
+        for line in f:
+            datosAvion = line.split('-')
+            datos.append(datosAvion)
+    
+    for i in range(len(datos)):
+        sublista = datos[i]
+        avion = Avion(sublista[0], sublista[1], sublista[2])
+        hashtable.agregar(int(avion.serial[1:]), avion)
+
+
+
+
 
 # MENU 
 def main():
+    leerTxt()
     while True:
         opcion = input("\n\t\tBienvenido a Aviocc Airlines!\n1. Inserción de un Nuevo Avión.\n2. Búsqueda de un Avión.\n3. Asignación de Piloto a un Avión Libre.\n4. Liberación de un Avión.\n5. Eliminación de un Avión.\n6. Salir.\n")
         print("------------------------------------------------------------------------------------------------------------------------------------")
