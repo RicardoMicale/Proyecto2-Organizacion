@@ -74,20 +74,25 @@ def crearPiloto():
     
     #Se crea el piloto
     piloto = Piloto(nombre)
-    #Se agrega a la lista de pilotos
-    pilotos.append(piloto)
     return piloto
 
 def registrarPiloto():
     '''Registra el piloto en el avion'''
     serial = input('Introduzca el serial completo del avion al que le quiere asignar el piloto: ')
-    
+    if serial == '' or len(serial) > 9 or type(serial[0]) != str:
+        #Si no es valido, retorna none
+        print('Serial no valido. Ingrese un serial de maximo 9 caracteres donde el primero sea una letra')
+        return None
     avion = hashtable.buscar(int(serial[1:]))
     avion.piloto = crearPiloto()
 
 def retirarPiloto():
     '''Elimina el piloto del avion'''
     serial = input('Introduzca el serial completo del avion al que le quiere retirar el piloto: ')
+    if serial == '' or len(serial) > 9 or type(serial[0]) != str:
+        #Si no es valido, retorna none
+        print('Serial no valido. Ingrese un serial de maximo 9 caracteres donde el primero sea una letra')
+        return None
     avion = hashtable.buscar(int(serial[1:]))
     avion.piloto = None
 
