@@ -116,6 +116,14 @@ def buscarAvionSerial():
         else:
             print('Avion no encontrado')
 
+def conversionBinaria(string):
+    '''Convierte strings a codigo binario y despues a integers'''
+    binario = ''.join(format(i, '08b') for i in bytearray(string, encoding='utf8'))
+    print(binario)
+    numero = int(binario, 2)
+    print(numero)
+    return numero
+
 def buscarAvionNombre(aviones):
     '''Busca el avion por nombre'''
     nombre = input('Introduzca el nombre del avion que quiere buscar: ')
@@ -127,9 +135,10 @@ def buscarAvionNombre(aviones):
     else:
         infoAviones = []
         #De lo contrario se busca el avion
+        llave = conversionBinaria(nombre)
         for x in aviones:
-            infoAviones= [x[0],x[2]]
-            if nombre == x[2]:
+            infoAviones = [x[0], x[2]]
+            if llave in infoAviones:
                 serial = x[0]
 
         avion = hashtable.buscar(int(serial[1:]))
@@ -137,7 +146,6 @@ def buscarAvionNombre(aviones):
             return avion.infoAvion()
         else:
             print('Avion no encontrado')
-
 
 def buscarAvionModelo(aviones):
     '''Busca el avion por Modelo'''
@@ -148,11 +156,12 @@ def buscarAvionModelo(aviones):
         print('Modelo no valido. Ingrese un Nombre de maximo 12 caracteres.')
         return None
     else:
-        infoAviones = []
+        infoAviones = aviones
         #De lo contrario se busca el avion
+        llave = conversionBinaria(modelo)
         for x in aviones:
-            infoAviones= [x[0],x[1]]
-            if modelo == x[1]:
+            infoAviones = [x[0], x[1]]
+            if llave in infoAviones:
                 serial = x[0]
 
         avion = hashtable.buscar(int(serial[1:]))
@@ -172,7 +181,10 @@ def leerTxt():
             datosAvion = line.split('-')
             datos.append(datosAvion)
             # Guarda los datos del txt en la lista para las busquedas
-            aviones.append(datosAvion)
+            datosAvion2 = line.split('-')
+            datosAvion2[1] = conversionBinaria(datosAvion2[1])
+            datosAvion2[2] = conversionBinaria(datosAvion2[2])
+            aviones.append(datosAvion2)
     
     for i in range(len(datos)):
         sublista = datos[i]
