@@ -167,7 +167,8 @@ def buscarAvionModelo(aviones):
 def leerTxt():
     datos = [] #Lista para los datos del archivo de texto
     with open('datos.txt', 'r') as f: #Se guardan las lineas del txt como sublistas con cada dato del avion
-        for line in f:
+        lista = f.read().splitlines() 
+        for line in lista:
             datosAvion = line.split('-')
             datos.append(datosAvion)
             # Guarda los datos del txt en la lista para las busquedas
