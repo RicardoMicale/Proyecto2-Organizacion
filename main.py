@@ -3,7 +3,6 @@ from Hashtable import Hashtable
 from Piloto import Piloto
 from Avion import Avion
 letras = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-pilotos = []
 aviones = []
 
 hashtable = Hashtable()
@@ -58,6 +57,7 @@ def crearAvion():
     avion = Avion(serial, modelo, nombre)
     #Se agrega al hash table
     hashtable.agregar(int(serial[1:]), avion) 
+    return Avion(serial, modelo, nombre)
 
 def crearPiloto():
     '''Crea el objeto piloto'''
@@ -111,6 +111,53 @@ def buscarAvionSerial():
         else:
             print('Avion no encontrado')
 
+def buscarAvionNombre(aviones):
+    '''Busca el avion por nombre'''
+    nombre = input('Introduzca el nombre del avion que quiere buscar: ')
+    serial = ''
+    if nombre == '' or len(nombre) > 12:
+        #Si no es valido, retorna none
+        print('Nombre no valido. Ingrese un Nombre de maximo 12 caracteres.')
+        return None
+    else:
+        infoAviones = []
+        #De lo contrario se busca el avion
+        for x in aviones:
+            infoAviones= [x[0],x[2]]
+            if nombre == x[2]:
+                serial = x[0]
+
+        avion = hashtable.buscar(int(serial[1:]))
+        if avion != None:
+            return avion.infoAvion()
+        else:
+            print('Avion no encontrado')
+
+
+def buscarAvionModelo(aviones):
+    '''Busca el avion por Modelo'''
+    modelo = input('Introduzca el Modelo del avion que quiere buscar: ')
+    serial = ''
+    if modelo == '' or len(modelo) > 20:
+        #Si no es valido, retorna none
+        print('Modelo no valido. Ingrese un Nombre de maximo 12 caracteres.')
+        return None
+    else:
+        infoAviones = []
+        #De lo contrario se busca el avion
+        for x in aviones:
+            infoAviones= [x[0],x[1]]
+            if modelo == x[1]:
+                serial = x[0]
+
+        avion = hashtable.buscar(int(serial[1:]))
+
+        if avion != None:
+            return avion.infoAvion()
+        else:
+            print('Avion no encontrado')
+
+
 #Leer archivo de texto
 def leerTxt():
     datos = [] #Lista para los datos del archivo de texto
@@ -118,22 +165,40 @@ def leerTxt():
         for line in f:
             datosAvion = line.split('-')
             datos.append(datosAvion)
+            # Guarda los datos del txt en la lista para las busquedas
+            aviones.append(datosAvion)
     
     for i in range(len(datos)):
         sublista = datos[i]
         avion = Avion(sublista[0], sublista[1], sublista[2])
         hashtable.agregar(int(avion.serial[1:]), avion)
 
+def busquedaBinarea(lista,llave):
+    primero = 0 
+    ultimo = len(lista) - 1
+    encontrado = False
+                
+    while primero <= ultimo and not encontrado:
+        mitad = (primero + ultimo) // 2
 
-
-
+        if lista[mitad] == llave:
+            encontrado = True
+        else:
+            if llave < lista[mitad]:
+                ultimo = mitad - 1
+            else:
+                primero = mitad + 1
+    return encontrado
 
 # MENU 
 def main():
     leerTxt()
+    avionTemp = []
     while True:
         opcion = input("\n\t\tBienvenido a Aviocc Airlines!\n1. Inserción de un Nuevo Avión.\n2. Búsqueda de un Avión.\n3. Asignación de Piloto a un Avión Libre.\n4. Liberación de un Avión.\n5. Eliminación de un Avión.\n6. Salir.\n")
         print("------------------------------------------------------------------------------------------------------------------------------------")
+        # Prueba para ver la lista de aviones agregados
+        print(aviones)
         # PRIMERA OPCION (CREACION AVION)
         if opcion == "1":
             while True:
@@ -143,7 +208,8 @@ def main():
                     # FUNCION PARA CREAR AVION
                     print("Entraste para crear un nuevo avion!")
                     print("------------------------------------------------------------------------------------------------------------------------------------")
-                    crearAvion()
+                    avionTemp = crearAvion()
+                    aviones.extend([[avionTemp.serial,avionTemp.modelo,avionTemp.nombre]])
                 elif opcion == "2":
                     # SALIR AL MENU NUEVAMENTE
                     break
@@ -165,10 +231,12 @@ def main():
                     # FUNCION PARA BUSCAR POR MODELO
                     print("Entraste a buscar por Modelo!")
                     print("------------------------------------------------------------------------------------------------------------------------------------")
+                    buscarAvionModelo(aviones)
                 elif opcion == "3":
                     # FUNCION PARA BUSCAR POR NOMBRE
                     print("Entraste a buscar por Nombre!")
                     print("------------------------------------------------------------------------------------------------------------------------------------")
+                    buscarAvionNombre(aviones)
                 elif opcion == "4":
                     # SALIR AL MENU NUEVAMENTE
                     break
