@@ -4,6 +4,7 @@ from Piloto import Piloto
 from Avion import Avion
 letras = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 aviones = []
+todosLosAviones = []
 
 hashtable = Hashtable()
 
@@ -180,6 +181,7 @@ def leerTxt():
         for line in lista:
             datosAvion = line.split('-')
             datos.append(datosAvion)
+            todosLosAviones.append(datosAvion)
             # Guarda los datos del txt en la lista para las busquedas
             datosAvion2 = line.split('-')
             datosAvion2[1] = conversionBinaria(datosAvion2[1])
