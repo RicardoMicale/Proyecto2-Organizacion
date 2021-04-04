@@ -1,4 +1,5 @@
 # Proyecto 2 - Organizacion del computador
+# Ricardo Micale y Eduardo Curiel
 from Hashtable import Hashtable
 from Piloto import Piloto
 from Avion import Avion
@@ -22,7 +23,7 @@ def crearAvion():
     nombre = ''
     #Validacion del serial
     while True:
-        serial = input('Ingrese el serial del avion: ')
+        serial = input('Ingrese el serial del avion: ').title()
         if len(serial) > 9:
             print('Serial no valido. Debe tener maximo 9 caracteres, empezando con 1 letra seguida de 8 numeros')
         elif serial[0].lower() not in letras:
@@ -36,7 +37,7 @@ def crearAvion():
     
     #Validacion del modelo
     while True:
-        modelo = input('Introduzca el modelo del avion: ')
+        modelo = input('Introduzca el modelo del avion: ').title()
         if len(modelo) > 20:
             print('Modelo no valido, debe tener como maximo 20 caracteres')
         elif modelo == '':
@@ -46,7 +47,7 @@ def crearAvion():
     
     #Validacion del nombre
     while True:
-        nombre = input('Introduzca el nombre del avion: ')
+        nombre = input('Introduzca el nombre del avion: ').title()
         if len(nombre) > 12:
             print('Nombre no valido. El nombre puede ser de hasta 12 caracteres')
         elif nombre == '':
@@ -127,7 +128,7 @@ def conversionBinaria(string):
 
 def buscarAvionNombre(aviones):
     '''Busca el avion por nombre'''
-    nombre = input('Introduzca el nombre del avion que quiere buscar: ')
+    nombre = input('Introduzca el nombre del avion que quiere buscar: ').title()
     serial = ''
     if nombre == '' or len(nombre) > 12:
         #Si no es valido, retorna none
@@ -158,7 +159,7 @@ def buscarAvionNombre(aviones):
 
 def buscarAvionModelo(aviones):
     '''Busca el avion por Modelo'''
-    modelo = input('Introduzca el Modelo del avion que quiere buscar: ')
+    modelo = input('Introduzca el Modelo del avion que quiere buscar: ').title()
     serial = ''
     if modelo == '' or len(modelo) > 20:
         #Si no es valido, retorna none
