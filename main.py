@@ -144,10 +144,11 @@ def buscarAvionNombre(aviones):
         #         serial = x[0]
 
         serial = busquedaBinaria(llave, 2)
-        avion = hashtable.buscar(int(serial[1:]))
 
-        if avion != None:
-            return avion.infoAvion()
+        if serial != None:
+            avion = hashtable.buscar(int(serial[1:]))
+            if avion != None:
+                return avion.infoAvion()
         else:
             print('Avion no encontrado')
 
@@ -174,10 +175,12 @@ def buscarAvionModelo(aviones):
         #     if llave in infoAviones:
         #         serial = x[0]
         serial = busquedaBinaria(llave, 1)
-        avion = hashtable.buscar(int(serial[1:]))
+        print(serial)
 
-        if avion != None:
-            return avion.infoAvion()
+        if serial != None:
+            avion = hashtable.buscar(int(serial[1:]))
+            if avion != None:
+                return avion.infoAvion()
         else:
             print('Avion no encontrado')
 
