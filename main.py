@@ -246,7 +246,7 @@ def main():
                     print("Entraste para crear un nuevo avion!")
                     print("------------------------------------------------------------------------------------------------------------------------------------")
                     avionTemp = crearAvion()
-                    aviones.extend([[avionTemp.serial,avionTemp.modelo,avionTemp.nombre]])
+                    aviones.extend([[avionTemp.serial,conversionBinaria(avionTemp.modelo),conversionBinaria(avionTemp.nombre)]])
                 elif opcion == "2":
                     # SALIR AL MENU NUEVAMENTE
                     break
