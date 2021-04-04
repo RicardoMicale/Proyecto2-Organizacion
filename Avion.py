@@ -14,7 +14,7 @@ class Avion():
     def infoAvion(self):
         print(
             'Serial del avion: {}\nModelo del avion: {}\nNombre del avion: {}\n'
-            .format(self.serial, self.modelo, self.nombre), end=' '
+            .format(self.serial, self.modelo, self.nombre)
         )
         if self.piloto != "No tiene Piloto":
-            print('Piloto: ' + self.piloto.getInfo() + '\n')
+            print('Piloto: ' + self.piloto + '\n')
