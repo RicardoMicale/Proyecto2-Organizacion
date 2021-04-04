@@ -14,8 +14,8 @@ class Hashtable():
         indice = self.hashFunc(llave)
         #El kvp (Key Value Pair) se define como una tupla cuyos valores son la llave y el valor que representa
         kvp = (llave, valor)
-        if len(self.lista[indice]) < 6: 
-            #Si ya hay 6 tuplas en la sublista (2 aviones + 4 aviones del overflow)
+        if len(self.lista[indice]) < 14: 
+            #Si ya hay 6 tuplas en la sublista (2 aviones + 12 aviones del overflow)
             #se muestra un mensaje de error
             self.lista[indice].append(kvp)
         else:
