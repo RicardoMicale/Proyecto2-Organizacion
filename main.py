@@ -128,6 +128,7 @@ def conversionBinaria(string):
 
 def buscarAvionNombre(aviones):
     '''Busca el avion por nombre'''
+    aviones = aviones.sort(key=lambda k: k[2])
     nombre = input('Introduzca el nombre del avion que quiere buscar: ').title()
     serial = ''
     if nombre == '' or len(nombre) > 12:
@@ -160,6 +161,7 @@ def buscarAvionNombre(aviones):
 
 def buscarAvionModelo(aviones):
     '''Busca el avion por Modelo'''
+    aviones = aviones.sort(key=lambda k: k[1])
     modelo = input('Introduzca el Modelo del avion que quiere buscar: ').title()
     serial = ''
     if modelo == '' or len(modelo) > 20:
