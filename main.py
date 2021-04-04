@@ -134,19 +134,27 @@ def buscarAvionNombre(aviones):
         print('Nombre no valido. Ingrese un Nombre de maximo 12 caracteres.')
         return None
     else:
-        infoAviones = []
+        # infoAviones = aviones
         #De lo contrario se busca el avion
         llave = conversionBinaria(nombre)
-        for x in aviones:
-            infoAviones = [x[0], x[2]]
-            if llave in infoAviones:
-                serial = x[0]
+        # for x in aviones:
+        #     infoAviones = [x[0], x[2]]
+        #     if llave in infoAviones:
+        #         serial = x[0]
 
-        avion = hashtable.buscar(int(serial[1:]))
-        if avion != None:
+        serial = busquedaBinaria(llave, 2)
+
+        if serial != None:
+            avion = hashtable.buscar(int(serial[1:]))
             return avion.infoAvion()
         else:
             print('Avion no encontrado')
+
+        # avion = hashtable.buscar(int(serial[1:]))
+        # if avion != None:
+        #     return avion.infoAvion()
+        # else:
+        #     print('Avion no encontrado')
 
 def buscarAvionModelo(aviones):
     '''Busca el avion por Modelo'''
@@ -157,20 +165,25 @@ def buscarAvionModelo(aviones):
         print('Modelo no valido. Ingrese un Nombre de maximo 12 caracteres.')
         return None
     else:
-        infoAviones = aviones
+        # infoAviones = aviones
         #De lo contrario se busca el avion
         llave = conversionBinaria(modelo)
-        for x in aviones:
-            infoAviones = [x[0], x[1]]
-            if llave in infoAviones:
-                serial = x[0]
+        # for x in aviones:
+        #     infoAviones = [x[0], x[1]]
+        #     if llave in infoAviones:
+        #         serial = x[0]
+        serial = busquedaBinaria(llave, 1)
 
-        avion = hashtable.buscar(int(serial[1:]))
-
-        if avion != None:
+        if serial != None:
+            avion = hashtable.buscar(int(serial[1:]))
             return avion.infoAvion()
         else:
             print('Avion no encontrado')
+
+        # if avion != None:
+        #     return avion.infoAvion()
+        # else:
+        #     print('Avion no encontrado')
 
 
 #Leer archivo de texto
@@ -193,22 +206,25 @@ def leerTxt():
         avion = Avion(sublista[0], sublista[1], sublista[2])
         hashtable.agregar(int(avion.serial[1:]), avion)
 
-def busquedaBinarea(lista,llave):
-    primero = 0 
-    ultimo = len(lista) - 1
+def busquedaBinaria(llave, indice):
+    primero = 0
+    ultimo = len(aviones) - 1
     encontrado = False
-                
-    while primero <= ultimo and not encontrado:
-        mitad = (primero + ultimo) // 2
 
-        if lista[mitad] == llave:
+    while not encontrado and primero <= ultimo:
+        mitad = (primero + ultimo) // 2
+        listaMedio = aviones[mitad]
+        valorMedio = listaMedio[indice]
+        if llave in listaMedio:
             encontrado = True
+            return listaMedio[0]
         else:
-            if llave < lista[mitad]:
+            if llave < valorMedio:
                 ultimo = mitad - 1
             else:
                 primero = mitad + 1
-    return encontrado
+    
+    return None
 
 # MENU 
 def main():
