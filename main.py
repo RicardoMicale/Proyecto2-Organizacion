@@ -58,7 +58,7 @@ def crearAvion():
     #Se crea el avion
     avion = Avion(serial, modelo, nombre)
     #Se agrega al hash table
-    hashtable.agregar(int(serial[1:]), avion) 
+    hashtable.agregar(int(serial[1:]), avion)
     return Avion(serial, modelo, nombre)
 
 def crearPiloto():
@@ -144,9 +144,9 @@ def buscarAvionNombre(aviones):
         #         serial = x[0]
 
         serial = busquedaBinaria(llave, 2)
+        avion = hashtable.buscar(int(serial[1:]))
 
-        if serial != None:
-            avion = hashtable.buscar(int(serial[1:]))
+        if avion != None:
             return avion.infoAvion()
         else:
             print('Avion no encontrado')
@@ -174,9 +174,9 @@ def buscarAvionModelo(aviones):
         #     if llave in infoAviones:
         #         serial = x[0]
         serial = busquedaBinaria(llave, 1)
+        avion = hashtable.buscar(int(serial[1:]))
 
-        if serial != None:
-            avion = hashtable.buscar(int(serial[1:]))
+        if avion != None:
             return avion.infoAvion()
         else:
             print('Avion no encontrado')
