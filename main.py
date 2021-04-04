@@ -91,7 +91,17 @@ def registrarPiloto():
     if avion.piloto != "No tiene Piloto":
         print("No se pudo añadir piloto. Este avion ya tiene un piloto.")
         return None
-    avion.piloto = crearPiloto()
+    nombre = ''
+    while True:
+        nombre = input('Ingrese el nombre del piloto: ')
+        if len(nombre) > 15:
+            print('Nombre muy largo. Introduzca un nombre menor a 15 caracteres.')
+        elif nombre == '':
+            print('Nombre no valido')
+        else:
+            break
+
+    avion.piloto = nombre.title()
     print("Piloto registrado Exitosamente!.")
 
 def retirarPiloto():
@@ -218,7 +228,7 @@ def leerTxt():
     
     for i in range(len(datos)):
         sublista = datos[i]
-        avion = Avion(sublista[0], sublista[1], sublista[2])
+        avion = Avion(sublista[0], sublista[1], sublista[2], piloto=sublista[3])
         hashtable.agregar(int(avion.serial[1:]), avion)
 
 def guardarTxt(todosLosAvionesTxt,aviones):
