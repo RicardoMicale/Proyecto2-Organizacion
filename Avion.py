@@ -1,5 +1,5 @@
 class Avion():
-    def __init__(self, serial, modelo, nombre, piloto=None):
+    def __init__(self, serial, modelo, nombre, piloto="No tiene Piloto"):
         self.serial = serial
         self.modelo = modelo
         self.nombre = nombre
@@ -9,12 +9,12 @@ class Avion():
         self.piloto = piloto
 
     def borrarPiloto(self):
-        self.piloto = None
+        self.piloto = "No tiene Piloto"
     
     def infoAvion(self):
         print(
             'Serial del avion: {}\nModelo del avion: {}\nNombre del avion: {}\n'
             .format(self.serial, self.modelo, self.nombre), end=' '
         )
-        if self.piloto != None:
+        if self.piloto != "No tiene Piloto":
             print('Piloto: ' + self.piloto.getInfo() + '\n')

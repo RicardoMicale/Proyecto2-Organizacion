@@ -1,3 +1,4 @@
-A11223344-Boeing 747-El Coloso
-A99008877-Airbus-El Pitufo
-B98765432-Boeing 757-El Volador
+A11223344-Boeing 747-El Coloso-No tiene Piloto
+A99008877-Airbus-El Pitufo-No tiene Piloto
+B98765432-Boeing 757-El Volador-No tiene Piloto
+A12345678-Airbus 302-El Ave-No tiene Piloto
